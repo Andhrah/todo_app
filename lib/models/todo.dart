@@ -1,5 +1,3 @@
-import 'package:flutter/scheduler.dart';
-
 class Todo {
   int _id;
   String _title;
