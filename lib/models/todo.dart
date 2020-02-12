@@ -1,3 +1,5 @@
+// This is the model class that have all the properties, methods, and constructors 
+// for the todo objects.
 class Todo {
   int _id;
   String _title;
@@ -5,7 +7,10 @@ class Todo {
   String _date;
   int _priority;
 
+  // Unnamed Constructor for creating a new todo and the db hasn't assigned an ID yet.
+  // There can only be one unnamed constructor in a class.
   Todo (this._title, this._priority, this._date, [this._description]);
+  // Named Constructor for when you have the ID. Now you can for example edit a todo.
   Todo.withId(this._id, this._title, this._priority, this._date, [this._description]);
   
   int get id => _id;
@@ -38,10 +43,10 @@ class Todo {
 
   Map <String, dynamic> toMap() {
     var map = Map<String, dynamic>();
-    map["title"] = _title;
-    map["description"] = _description;
-    map["priority"] = _priority;
-    map["date"] = _date;
+    map['title'] = _title;
+    map['description'] = _description;
+    map['priority'] = _priority;
+    map['date'] = _date;
     if(_id != null) {
       map["id"] = _id;
     }
@@ -49,10 +54,10 @@ class Todo {
   }
 
   Todo.fromObject(dynamic o) {
-    this._id = o["id"];
-    this._title = o["title"];
-    this.description = o["description"];
-    this._priority = o["priority"];
-    this._date = o["date"];
+    this._id = o['id'];
+    this._title = o['title'];
+    this.description = o['description'];
+    this._priority = o['priority'];
+    this._date = o['date'];
   }
 }
