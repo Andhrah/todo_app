@@ -19,8 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # qflite for the db plugin
   sqflite: any
+  # path_provider for finding commonly used locations on the filesystem
   path_provider: any
+  # intl(internationalization) for formatting and parsing date/number"
   intl: ^0.15.7
 
   # The following adds the Cupertino Icons font to your application.
