@@ -76,4 +76,11 @@ class DbHelper {
     var result = await db.insert(tableName, todo.toMap());
     return result;
   }
+
+  /// SQL query method for selecting from the database. 
+  Future<List> getTodos() async {
+    Database db = await this.db;
+    var result = await db.rawQuery('SELECT * FROM $tableName order by $columnPriority ASC');
+    return result;
+  }
 }
