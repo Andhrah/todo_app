@@ -47,7 +47,7 @@ class TodoListState extends State {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.red,
-              child: Text(this.todos[position].id.toString()),
+              child: Text(this.todos[position].priority.toString()),
             ),
             title: Text(this.todos[position].title),
             subtitle: Text(this.todos[position].date),
@@ -81,4 +81,5 @@ class TodoListState extends State {
       });
     });
   }
+
 }
