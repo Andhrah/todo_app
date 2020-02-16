@@ -46,7 +46,7 @@ class TodoListState extends State {
           elevation: 2.0,
           child: ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.red,
+              backgroundColor: getColor(this.todos[position].priority),
               child: Text(this.todos[position].priority.toString()),
             ),
             title: Text(this.todos[position].title),

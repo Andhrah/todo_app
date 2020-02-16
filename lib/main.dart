@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       (result) => helper.getTodos().then((result) =>todos=result)
     );
     DateTime today = DateTime.now();
-    Todo todo = Todo('Chat with friends', 1, today.toString(), 'Chat shouldnt exceed 30mins');
+    Todo todo = Todo('Chat', 2, today.toString(), 'Chat shouldnt exceed 30mins');
     var result = helper.insertTodo(todo);
 
     return MaterialApp(
