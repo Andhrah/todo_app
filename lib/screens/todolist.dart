@@ -32,6 +32,7 @@ class TodoListState extends State {
       floatingActionButton: FloatingActionButton(
         onPressed: null,
         tooltip: 'Add new Todo',
+        child: Icon(Icons.add),
         ),
     );
   }
@@ -59,6 +60,8 @@ class TodoListState extends State {
     );
   }
 
+
+  /// getData is a method for retrieving data from the database.
   void getData() {
     final dbFuture = helper.initializeDb();
     dbFuture.then((result) {
@@ -66,7 +69,7 @@ class TodoListState extends State {
       todosFuture.then((result){
         List<Todo> todoList = List<Todo>();
         count = result.length;
-        for (int i = 0; i < count; i++) {
+        for (int i=0; i<count; i++) {
           todoList.add(Todo.fromObject(result[i]));
           debugPrint(todoList[i].title);
         }
