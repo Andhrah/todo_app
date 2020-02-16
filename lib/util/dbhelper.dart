@@ -80,7 +80,7 @@ class DbHelper {
     return result;
   }
 
-  /// SQL query method for selecting from the database.
+  /// SQL query method for selecting values from the database.
   /// 
   /// This method reads values from the database. 
   Future<List> getTodos() async {
@@ -90,7 +90,7 @@ class DbHelper {
     return result;
   }
 
-  /// SQL query method for selecting from the database.
+  /// SQL query method for selecting values from the database.
   /// 
   /// This method reads value from the database. It gets the
   /// number of record in our table.
@@ -103,7 +103,7 @@ class DbHelper {
     return result;
   }
 
-  /// SQL query method for updating the database.
+  /// SQL query method for updating value in the database.
   /// 
   /// This method writes value into the database table. It updates
   /// a specific values in the db table.
@@ -113,6 +113,18 @@ class DbHelper {
     var result = await db.update(tableName, todo.toMap(),
       where: '$columnId = ?', whereArgs: [todo.id]
     );
+    return result;
+  }
+
+  /// SQL query method for deleting value from the database.
+  /// 
+  /// This method deletes value from the database table. It delete
+  /// a specific values in the db table.
+  Future<int> deleteTodo(int id) async {
+    int result;
+    // Get the db.
+    var db = await this.db;
+    result = await db.rawDelete('DELETE FROM $tableName WHERE $columnId = $id');
     return result;
   }
 }
