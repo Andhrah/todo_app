@@ -69,4 +69,11 @@ class DbHelper {
       'CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY, $columnTitle TEXT, ' + '$columnDescription TEXT, $columnPriority INTEGER, $columnDate TEXT)'
     );
   }
+
+  /// An SQL query method for inserting into the database.
+  Future<int> insertTodo(Todo todo) async {
+    Database db = await this.db;
+    var result = await db.insert(tableName, todo.toMap());
+    return result;
+  }
 }
