@@ -70,14 +70,18 @@ class DbHelper {
     );
   }
 
-  /// An SQL query method for inserting into the database.
+  /// SQL query method for inserting into the database.
+  /// 
+  /// This method write values into the database.
   Future<int> insertTodo(Todo todo) async {
     Database db = await this.db;
     var result = await db.insert(tableName, todo.toMap());
     return result;
   }
 
-  /// SQL query method for selecting from the database. 
+  /// SQL query method for selecting from the database.
+  /// 
+  /// This method reads values from the database. 
   Future<List> getTodos() async {
     Database db = await this.db;
     var result = await db.rawQuery('SELECT * FROM $tableName order by $columnPriority ASC');
