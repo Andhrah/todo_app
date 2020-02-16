@@ -82,4 +82,25 @@ class TodoListState extends State {
     });
   }
 
+  /// getColor method contain priority of our todo and return
+  /// specific color base on the priority of the todo.
+  Color getColor(int priority) {
+    switch (priority) {
+      case 1:
+        return Colors.red;
+        break;
+
+      case 2:
+        return Colors.orange;
+        break;
+
+      case 3:
+        return Colors.green;
+        break;
+
+      default:
+        return Colors.green;
+    }
+  }
+
 }
