@@ -87,4 +87,16 @@ class DbHelper {
     var result = await db.rawQuery('SELECT * FROM $tableName order by $columnPriority ASC');
     return result;
   }
+
+  /// SQL query method for selecting from the database.
+  /// 
+  /// This method reads value from the database. It gets the
+  /// number of record in our table.
+  Future<int> getCount() async {
+    Database db = await this.db;
+    var result = Sqflite.firstIntValue(
+      await db.rawQuery('select count (*) from $tableName')
+    );
+    return result;
+  }
 }
