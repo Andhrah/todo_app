@@ -74,6 +74,7 @@ class DbHelper {
   /// 
   /// This method write values into the database.
   Future<int> insertTodo(Todo todo) async {
+    // Get the db.
     Database db = await this.db;
     var result = await db.insert(tableName, todo.toMap());
     return result;
@@ -83,6 +84,7 @@ class DbHelper {
   /// 
   /// This method reads values from the database. 
   Future<List> getTodos() async {
+      // Get the db.
     Database db = await this.db;
     var result = await db.rawQuery('SELECT * FROM $tableName order by $columnPriority ASC');
     return result;
@@ -93,9 +95,23 @@ class DbHelper {
   /// This method reads value from the database. It gets the
   /// number of record in our table.
   Future<int> getCount() async {
+    // Get the db.
     Database db = await this.db;
     var result = Sqflite.firstIntValue(
       await db.rawQuery('select count (*) from $tableName')
+    );
+    return result;
+  }
+
+  /// SQL query method for updating the database.
+  /// 
+  /// This method writes value into the database table. It updates
+  /// a specific values in the db table.
+  Future<int> updateTodo(Todo todo) async {
+    // Get the db.
+    var db = await this.db;
+    var result = await db.update(tableName, todo.toMap(),
+      where: '$columnId = ?', whereArgs: [todo.id]
     );
     return result;
   }
